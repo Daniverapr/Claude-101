@@ -422,6 +422,8 @@ footer{border-top:1px solid var(--border);padding:56px 0 32px;margin-top:40px;}
   .nav-links{display:none;}
   .mobile-toggle{display:block;}
   .founder-block,.two-col,.card-grid,.resource-grid,.testi-grid,.calendar{grid-template-columns:1fr;}
+  .founder-block.photo-right{grid-template-columns:1fr;}
+  .founder-block.photo-right .founder-photo{order:0;max-width:320px;margin:0 auto;}
   .cal-left{border-right:none;border-bottom:1px solid var(--border);padding:0 0 20px 0;margin-bottom:20px;}
   .cal-right{padding-left:0;}
   .dash-wrap{grid-template-columns:1fr;}
