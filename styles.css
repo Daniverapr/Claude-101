@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Claude 101 — Design System
+   Daniel Vera — Marca Personal — Sistema de Diseño
    Clonado de la arquitectura visual de consulting.com (ver auditoría).
    Tokens en :root — cambia SOLO aquí para retemar todo el sitio.
    ========================================================================== */
@@ -16,9 +16,9 @@
   --text:#f3f1ec;
   --text-muted:#9c9994;
   --text-faint:#6c6965;
-  --gold-1:#c8863a;
-  --gold-2:#e8b968;
-  --gold-3:#f6dfae;
+  --gold-1:#b8490f;
+  --gold-2:#ef691a;
+  --gold-3:#ff9a5c;
   --gold-grad:linear-gradient(135deg, var(--gold-3), var(--gold-1));
   --good:#5fd08a;
   --radius-lg:20px;
@@ -85,7 +85,7 @@ header.nav{
   cursor:pointer;
   transition:transform .18s ease, box-shadow .18s ease;
 }
-.btn-pill:hover{transform:translateY(-1px);box-shadow:0 10px 24px -8px rgba(232,185,104,0.5);}
+.btn-pill:hover{transform:translateY(-1px);box-shadow:0 10px 24px -8px rgba(239,105,26,0.5);}
 .btn-ghost{
   display:inline-block;
   border:1px solid var(--border-strong);
@@ -125,22 +125,46 @@ section{padding:88px 0;}
 
 /* ---------- Founder block ---------- */
 .founder-block{display:grid;grid-template-columns:340px 1fr;gap:56px;align-items:center;}
+.founder-block.photo-right{grid-template-columns:1fr 340px;}
+.founder-block.photo-right .founder-photo{order:2;}
+
+/* ---------- Story chapters (Sobre Mí, sin foto) ---------- */
+.story-chapters{display:flex;flex-direction:column;}
+.story-chapter{display:grid;grid-template-columns:60px 1fr;gap:24px;padding:30px 0;border-bottom:1px solid var(--border);}
+.story-chapter:last-of-type{border-bottom:none;}
+.story-num{font-family:var(--serif);font-size:30px;color:var(--gold-2);opacity:.5;line-height:1;}
+.story-chapter h4{font-size:20px;margin-bottom:10px;}
+.story-chapter p{color:var(--text-muted);font-size:16px;}
+@media (max-width:600px){
+  .story-chapter{grid-template-columns:1fr;gap:8px;}
+  .story-num{font-size:22px;}
+}
+
+/* ---------- Photo gallery ---------- */
+.photo-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.photo-gallery .g-item{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);aspect-ratio:4/5;background:var(--card);}
+.photo-gallery .g-item.wide{grid-column:span 2;aspect-ratio:8/5;}
+.photo-gallery .g-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+.photo-gallery .g-item:hover img{transform:scale(1.05);}
 .founder-photo{
   aspect-ratio:4/5;border-radius:var(--radius-lg);
   background:linear-gradient(160deg,#2a2a2a,#111);
   display:flex;align-items:center;justify-content:center;
   border:1px solid var(--border);
   font-family:var(--serif);font-size:64px;color:var(--gold-2);
+  overflow:hidden;
 }
+.founder-photo img{width:100%;height:100%;object-fit:cover;display:block;}
 .signature{font-family:'Playfair Display';font-style:italic;color:var(--text-muted);font-size:26px;margin-top:20px;}
 
 /* ---------- Product grid ---------- */
 .card-grid{
   display:grid;grid-template-columns:repeat(2,1fr);gap:20px;
   border:1px solid var(--border);border-radius:28px;padding:28px;
-  background:radial-gradient(ellipse at top, rgba(232,185,104,0.05), transparent 60%);
+  background:radial-gradient(ellipse at top, rgba(239,105,26,0.05), transparent 60%);
   position:relative;overflow:hidden;
 }
+.resource-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
 .card-grid::before{
   content:"";position:absolute;top:0;left:10%;right:10%;height:1px;
   background:linear-gradient(90deg,transparent,var(--gold-2),transparent);
@@ -158,7 +182,14 @@ section{padding:88px 0;}
   border:1px solid var(--border-strong);
   display:flex;align-items:center;justify-content:center;
   color:var(--gold-2);font-size:24px;margin-bottom:20px;
-  background:radial-gradient(circle at 30% 20%, rgba(232,185,104,0.14), transparent 70%);
+  background:radial-gradient(circle at 30% 20%, rgba(239,105,26,0.14), transparent 70%);
+}
+.icon-mask{
+  width:24px;height:24px;background:var(--gold-2);
+  -webkit-mask-image:var(--icon-url);mask-image:var(--icon-url);
+  -webkit-mask-position:center;mask-position:center;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-size:contain;mask-size:contain;
 }
 .tier-card h3{font-size:22px;margin-bottom:10px;}
 .tier-card p{color:var(--text-muted);font-size:15px;}
@@ -231,7 +262,7 @@ section{padding:88px 0;}
 /* ---------- CTA band ---------- */
 .cta-band{
   border-radius:32px;padding:72px 40px;text-align:center;
-  background:radial-gradient(ellipse at center, rgba(232,185,104,0.08), transparent 70%), var(--bg-elevated);
+  background:radial-gradient(ellipse at center, rgba(239,105,26,0.08), transparent 70%), var(--bg-elevated);
   border:1px solid var(--border);
 }
 .cta-band h2{font-size:clamp(28px,4vw,44px);margin-bottom:16px;}
@@ -334,18 +365,169 @@ footer{border-top:1px solid var(--border);padding:56px 0 32px;margin-top:40px;}
 .small-note{font-size:13px;color:var(--text-faint);}
 .placeholder-flag{color:var(--gold-2);}
 
+/* ---------- Newsletter ---------- */
+.newsletter-box{
+  border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--card);
+  padding:40px;text-align:center;
+}
+.newsletter-form{
+  display:flex;gap:10px;max-width:440px;margin:22px auto 0;
+}
+.newsletter-form input{
+  flex:1;background:var(--card-2);border:1px solid var(--border-strong);border-radius:var(--radius-pill);
+  padding:13px 20px;color:var(--text);font-family:var(--sans);font-size:14.5px;
+}
+.newsletter-form input::placeholder{color:var(--text-faint);}
+.newsletter-form button{border:none;cursor:pointer;}
+
+/* ---------- Venture wordmark card ---------- */
+.venture-word{font-family:var(--serif);font-size:26px;color:var(--gold-2);margin-bottom:6px;}
+.venture-logo-img{height:30px;width:auto;margin-bottom:10px;display:block;}
+.platform-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;}
+
+/* ---------- ZafaCare real brand assets ---------- */
+@font-face{font-family:'Ashcroft';src:url('assets/fonts/Ashcroft-Regular.otf') format('opentype');font-weight:400;font-style:normal;}
+@font-face{font-family:'Ashcroft';src:url('assets/fonts/Ashcroft-SemiBold.otf') format('opentype');font-weight:600;font-style:normal;}
+@font-face{font-family:'Ashcroft';src:url('assets/fonts/Ashcroft-Italic.otf') format('opentype');font-weight:400;font-style:italic;}
+.zc-badge{display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;}
+.zc-badge img{height:34px;width:auto;}
+.zc-badge span{font-family:'Ashcroft',var(--serif);font-weight:600;font-size:15px;color:var(--text-muted);letter-spacing:.02em;}
+.service-icon-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;}
+.service-icon-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:26px 20px;text-align:center;
+}
+.service-icon-card img{height:38px;width:auto;margin:0 auto 14px;display:block;}
+.service-icon-card h4{font-size:15.5px;margin-bottom:6px;}
+.service-icon-card p{color:var(--text-muted);font-size:13px;}
+.platform-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:26px 22px;text-align:center;
+}
+.platform-card .icon{font-size:26px;margin-bottom:12px;display:block;}
+.platform-card h4{font-size:16px;margin-bottom:8px;}
+.platform-card p{color:var(--text-muted);font-size:13px;}
+.timeline{border-left:2px solid var(--border-strong);padding-left:28px;display:flex;flex-direction:column;gap:32px;margin-left:6px;}
+.timeline-item{position:relative;}
+.timeline-item::before{
+  content:"";position:absolute;left:-33px;top:4px;width:10px;height:10px;border-radius:50%;
+  background:var(--gold-grad);
+}
+.timeline-item .year{color:var(--gold-2);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;display:block;}
+.timeline-item h4{font-size:18px;margin-bottom:8px;}
+.timeline-item p{color:var(--text-muted);font-size:14.5px;}
+
 /* ---------- Responsive ---------- */
 @media (max-width:920px){
   .nav-links{display:none;}
   .mobile-toggle{display:block;}
-  .founder-block,.two-col,.card-grid,.testi-grid,.calendar{grid-template-columns:1fr;}
+  .founder-block,.two-col,.card-grid,.resource-grid,.testi-grid,.calendar{grid-template-columns:1fr;}
   .cal-left{border-right:none;border-bottom:1px solid var(--border);padding:0 0 20px 0;margin-bottom:20px;}
   .cal-right{padding-left:0;}
   .dash-wrap{grid-template-columns:1fr;}
-  .stat-band,.pillars,.included-grid{grid-template-columns:1fr 1fr;}
+  .stat-band,.pillars,.included-grid,.platform-row{grid-template-columns:1fr 1fr;}
   .platform-bars{height:180px;}
+  .newsletter-form{flex-direction:column;}
 }
 @media (max-width:600px){
-  .stat-band,.pillars,.included-grid{grid-template-columns:1fr;}
+  .stat-band,.pillars,.included-grid,.platform-row{grid-template-columns:1fr;}
   .footer-top,.footer-bottom{flex-direction:column;gap:14px;align-items:flex-start;}
+}
+
+/* ==========================================================================
+   Glassmorphism — capa de vidrio esmerilado sobre todo el sitio
+   ========================================================================== */
+:root{
+  --glass-bg:rgba(255,255,255,0.045);
+  --glass-bg-strong:rgba(255,255,255,0.08);
+  --glass-border:rgba(255,255,255,0.14);
+  --glass-blur:blur(22px);
+}
+
+/* Manchas de color de fondo, fijas, para que el desenfoque tenga algo que difuminar */
+body{position:relative;}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 12% 15%, rgba(239,105,26,0.20), transparent 42%),
+    radial-gradient(circle at 88% 10%, rgba(200,134,58,0.16), transparent 40%),
+    radial-gradient(circle at 18% 80%, rgba(246,223,174,0.10), transparent 45%),
+    radial-gradient(circle at 84% 84%, rgba(239,105,26,0.14), transparent 42%),
+    var(--bg);
+  pointer-events:none;
+}
+
+/* Nav esmerilado */
+header.nav{
+  background:rgba(15,15,15,0.42);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  border-bottom:1px solid var(--glass-border);
+}
+
+/* Tarjetas y paneles → vidrio */
+.tier-card,
+.testi-card,
+.stat-mini,
+.service-icon-card,
+.platform-card,
+.g-item,
+.newsletter-box{
+  background:var(--glass-bg);
+  backdrop-filter:var(--glass-blur) saturate(150%);
+  -webkit-backdrop-filter:var(--glass-blur) saturate(150%);
+  border:1px solid var(--glass-border);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 32px -14px rgba(0,0,0,0.55);
+  transition:background .25s ease, transform .25s ease;
+}
+.tier-card:hover,
+.testi-card:hover,
+.service-icon-card:hover,
+.platform-card:hover{
+  background:var(--glass-bg-strong);
+}
+
+.card-grid,
+.cta-band,
+.founder-photo{
+  backdrop-filter:blur(18px) saturate(140%);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+  border:1px solid var(--glass-border);
+}
+
+.tier-icon{
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  background:var(--glass-bg-strong);
+}
+
+.social-icons a{
+  background:var(--glass-bg);
+  border:1px solid var(--glass-border);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  transition:background .2s ease;
+}
+.social-icons a:hover{background:var(--glass-bg-strong);}
+
+.btn-ghost{
+  background:var(--glass-bg-strong);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--glass-border);
+}
+
+.zc-badge,
+.announce{
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+}
+
+footer{
+  background:var(--glass-bg);
+  backdrop-filter:blur(16px) saturate(130%);
+  -webkit-backdrop-filter:blur(16px) saturate(130%);
 }

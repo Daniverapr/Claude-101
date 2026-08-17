@@ -1,8 +1,8 @@
-# Claude 101
+# Daniel Vera — Sitio Web
 
-Sitio web de **Claude 101** — consultoría de adopción de IA que ayuda a profesionales y equipos a dominar Claude a través de formación, sistemas e implementación.
+Sitio de marca personal de **Daniel Vera**, construyendo ZafaCare en público.
 
-🔗 **Sitio en vivo:** _(pendiente — se activa con GitHub Pages)_
+🔗 **En vivo:** https://danielveraceo.com
 
 ## Estructura
 
@@ -11,36 +11,28 @@ Sitio estático (HTML + CSS + JS, sin build ni dependencias).
 | Archivo | Página |
 |---|---|
 | `index.html` | Inicio |
-| `fundamentos.html` | Fundamentos |
-| `dominio.html` | Dominio |
-| `cumbre.html` | Cumbre |
-| `cumbre-evento.html` | Detalle del evento Cumbre |
-| `nosotros.html` | Nosotros |
-| `carreras.html` | Carreras |
-| `aplicar.html` | Aplicar |
+| `sobremi.html` | Sobre Mí |
+| `zafacare.html` | ZafaCare |
+| `recursos.html` | Recursos |
+| `contacto.html` | Contacto |
 | `styles.css` | Estilos globales |
-| `script.js` | Interacciones (menú móvil, animaciones al hacer scroll) |
+| `script.js` | Interacciones |
+| `assets/` | Fotos, logos, íconos y fuentes (Ashcroft) |
 
 ## Editar el sitio
 
-1. Abre cualquier archivo `.html` en un editor.
-2. Guarda los cambios.
-3. Súbelos a GitHub:
+1. Edita cualquier archivo `.html` o los estilos.
+2. Sube los cambios a GitHub:
    ```bash
    git add .
    git commit -m "Describe tu cambio"
    git push
    ```
-4. GitHub Pages publica los cambios en 1–2 minutos.
+3. Netlify republica automáticamente en ~30 segundos.
 
-## Pendientes antes del lanzamiento completo
+## Notas
 
-El sitio contiene marcadores de plantilla `[entre corchetes]` (fechas, cifras del dashboard,
-testimonios, precios, enlaces sociales). Reemplázalos por datos reales y verificados
-antes de promocionar el sitio. **No inventes cifras ni testimonios.**
-
----
-
-Claude 101 es una marca independiente de formación y consultoría. No es un producto oficial de
-Anthropic, no está afiliada a Anthropic PBC ni respaldada por Anthropic. "Claude" es una marca
-registrada de Anthropic PBC.
+- Contacto vía `mailto:ceodanielvera@gmail.com`.
+- Redes: Instagram / LinkedIn / YouTube `@danielveraceo`.
+- Pendiente (opcional): páginas de *Política de Privacidad* y *Términos y Condiciones*
+  (actualmente enlazan a `#` en el footer).

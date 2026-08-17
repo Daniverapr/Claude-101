@@ -79,9 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
       links.style.top = '64px';
       links.style.left = '0';
       links.style.right = '0';
-      links.style.background = '#0a0a0a';
+      links.style.background = 'rgba(15,15,15,0.75)';
+      links.style.backdropFilter = 'blur(20px) saturate(160%)';
+      links.style.webkitBackdropFilter = 'blur(20px) saturate(160%)';
       links.style.padding = '20px 24px';
-      links.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
+      links.style.borderBottom = '1px solid rgba(255,255,255,0.14)';
     });
   }
 });
